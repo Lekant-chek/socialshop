@@ -2,11 +2,11 @@
 {% load static %}
 
 {% block css %}
-    <link href="{% static 'vendor/css/products.css' %}" rel="stylesheet">
+<link href="{% static 'vendor/css/products.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
-    <div class="container">
+<div class="container">
 
     <div class="row">
 
@@ -14,11 +14,9 @@
 
             <h1 class="my-4">GeekShop</h1>
             <div class="list-group">
-                <a href="#" class="list-group-item">Новинки</a>
-                <a href="#" class="list-group-item">Одежда</a>
-                <a href="#" class="list-group-item">Обувь</a>
-                <a href="#" class="list-group-item">Аксессуары</a>
-                <a href="#" class="list-group-item">Подарки</a>
+                {% for category in categories %}
+                    <a href="#" class="list-group-item">{{ category.name }}</a>
+                {% endfor %}
             </div>
 
         </div>
@@ -34,13 +32,16 @@
                 </ol>
                 <div class="carousel-inner" role="listbox">
                     <div class="carousel-item active">
-                        <img class="d-block img-fluid" src="{% static 'vendor/img/slides/slide-1.jpg' %}" alt="First slide">
+                        <img class="d-block img-fluid" src="{% static 'vendor/img/slides/slide-1.jpg' %}"
+                             alt="First slide">
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block img-fluid" src="{% static 'vendor/img/slides/slide-2.jpg' %}" alt="Second slide">
+                        <img class="d-block img-fluid" src="{% static 'vendor/img/slides/slide-2.jpg' %}"
+                             alt="Second slide">
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block img-fluid" src="{% static 'vendor/img/slides/slide-3.jpg' %}" alt="Third slide">
+                        <img class="d-block img-fluid" src="{% static 'vendor/img/slides/slide-3.jpg' %}"
+                             alt="Third slide">
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -55,6 +56,7 @@
 
             <div class="row">
 
+                {% for product in products %}
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="card h-100">
                         <a href="#">
@@ -64,117 +66,18 @@
                         </a>
                         <div class="card-body">
                             <h4 class="card-title">
-                                <a href="#">Игрушка деревянная Викинги</a>
+                                <a href="#">{{ product.name}}</a>
                             </h4>
-                            <h5>6 090,00 руб.</h5>
-                            <p class="card-text">Познание истории в игре – лучшая учёба с раннего детства.</p>
+                            <h5>{{ product.price}} руб.</h5>
+                            <p class="card-text">{{ product.description }}</p>
                         </div>
                         <div class="card-footer text-center">
                             <button type="button" class="btn btn-outline-success">Отправить в корзину</button>
                         </div>
                     </div>
                 </div>
+                {% endfor %}
 
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card h-100">
-                        <a href="#">
-                            <img class="card-img-top"
-                                 src="{% static 'vendor/img/products/Игрушка деревянная Лесные находки.jpg' %}" alt="">
-                        </a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Игрушка деревянная Лесные находки</a>
-                            </h4>
-                            <h5>23 725,00 руб.</h5>
-                            <p class="card-text">
-                                Сколько же всего можно собрать в лесу!.
-                            </p>
-                        </div>
-                        <div class="card-footer text-center">
-                            <button type="button" class="btn btn-outline-danger">Удалить из корзины</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card h-100">
-                        <a href="#">
-                            <img class="card-img-top"
-                                 src="{% static 'vendor/img/products/Шахматы-мнемоники.jpg' %}"
-                                 alt="">
-                        </a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Шахматы-мнемоники</a>
-                            </h4>
-                            <h5>3 390,00 руб.</h5>
-                            <p class="card-text">Интересно для детей и взрослых. Попробуй запомни!</p>
-                        </div>
-                        <div class="card-footer text-center">
-                            <button type="button" class="btn btn-outline-success">Отправить в корзину</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card h-100">
-                        <a href="#">
-                            <img class="card-img-top"
-                                 src="{% static 'vendor/img/products/Шахматы на троих.jpg' %}"
-                                 alt="">
-                        </a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Шахматы на троих</a>
-                            </h4>
-                            <h5>2 340,00 руб.</h5>
-                            <p class="card-text">Один против всех?</p>
-                        </div>
-                        <div class="card-footer text-center">
-                            <button type="button" class="btn btn-outline-success">Отправить в корзину</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card h-100">
-                        <a href="#">
-                            <img class="card-img-top"
-                                 src="{% static 'vendor/img/products/Собаки и шакалы.jpg' %}"
-                                 alt="">
-                        </a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Собаки и шакалы</a>
-                            </h4>
-                            <h5>13 590,00 руб.</h5>
-                            <p class="card-text">Повезёт или нет? Игра из Древнего Египта.</p>
-                        </div>
-                        <div class="card-footer text-center">
-                            <button type="button" class="btn btn-outline-success">Отправить в корзину</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card h-100">
-                        <a href="#">
-                            <img class="card-img-top"
-                                 src="{% static 'vendor/img/products/Хнефатафл.jpg' %}"
-                                 alt="">
-                        </a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Хнефатафл</a>
-                            </h4>
-                            <h5>2 890,00 руб.</h5>
-                            <p class="card-text">Игра из древней Скандинавии. Сражение с королём.</p>
-                        </div>
-                        <div class="card-footer text-center">
-                            <button type="button" class="btn btn-outline-success">Отправить в корзину</button>
-                        </div>
-                    </div>
-                </div>
 
             </div>
 
@@ -200,7 +103,7 @@
 {% endblock %}
 
 {% block footer %}
-    <footer class="py-5 bg-dark">
+<footer class="py-5 bg-dark">
     <div class="container">
         <p class="m-0 text-center text-white">Copyright &copy; GeekShop 2020</p>
     </div>
